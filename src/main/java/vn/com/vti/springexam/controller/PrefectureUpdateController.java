@@ -16,11 +16,14 @@ import vn.com.vti.springexam.entity.PrefectureInfrastructure;
 import vn.com.vti.springexam.entity.PrefectureInfrastructureExample;
 import vn.com.vti.springexam.entity.Section3;
 import vn.com.vti.springexam.entity.Section3Example;
+import vn.com.vti.springexam.entity.Section8;
+import vn.com.vti.springexam.entity.Section8Example;
 import vn.com.vti.springexam.form.PrefectureForm;
 import vn.com.vti.springexam.mapper.InfrastructureMapper;
 import vn.com.vti.springexam.mapper.PrefectureInfrastructureMapper;
 import vn.com.vti.springexam.mapper.PrefectureMapper;
 import vn.com.vti.springexam.mapper.Section3Mapper;
+import vn.com.vti.springexam.mapper.Section8Mapper;
 
 @Controller
 @RequestMapping("/prefectureUpdate")
@@ -31,6 +34,8 @@ public class PrefectureUpdateController {
 	private PrefectureInfrastructureMapper prefectureInfrastructureMapper;
 	@Autowired
 	private Section3Mapper section3Mapper;
+	@Autowired
+	private Section8Mapper section8Mapper;
 	@Autowired
 	private InfrastructureMapper infrastructureMapper;
 
@@ -45,6 +50,7 @@ public class PrefectureUpdateController {
 		prefectureForm.setName(prefecture.getName());
 		prefectureForm.setPopulation(prefecture.getPopulation());
 		prefectureForm.setSection3Id(prefecture.getSection3Id());
+		prefectureForm.setSection8Id(prefecture.getSection8Id());
 		PrefectureInfrastructureExample prefectureInfrastructureExample = new PrefectureInfrastructureExample();
 		prefectureInfrastructureExample.createCriteria().andPrefectureIdEqualTo(prefectureForm.getId());
 		List<PrefectureInfrastructure> prefectureInfrastructureList = prefectureInfrastructureMapper
@@ -61,10 +67,17 @@ public class PrefectureUpdateController {
 		section3Example.setOrderByClause("id");
 		List<Section3> section3List = section3Mapper.selectByExample(section3Example);
 		model.addAttribute("section3List", section3List);
+		
 		InfrastructureExample infrastructureExample = new InfrastructureExample();
 		infrastructureExample.setOrderByClause("id");
 		List<Infrastructure> infrastructureList = infrastructureMapper.selectByExample(infrastructureExample);
 		model.addAttribute("infrastructureList", infrastructureList);
+		
+		Section8Example section8Example = new Section8Example();
+		section8Example.setOrderByClause("id");
+		List<Section8> section8List = section8Mapper.selectByExample(section8Example);
+		model.addAttribute("section8List", section8List);
+		
 		return "prefecture/prefectureUpdateInput";
 	}
 
@@ -91,6 +104,7 @@ public class PrefectureUpdateController {
 		prefecture.setName(prefectureForm.getName());
 		prefecture.setPopulation(prefectureForm.getPopulation());
 		prefecture.setSection3Id(prefectureForm.getSection3Id());
+		prefecture.setSection8Id(prefectureForm.getSection8Id());
 		prefectureMapper.updateByPrimaryKey(prefecture);
 		PrefectureInfrastructureExample prefectureInfrastructureExample = new PrefectureInfrastructureExample();
 		prefectureInfrastructureExample.createCriteria().andPrefectureIdEqualTo(prefectureForm.getId());

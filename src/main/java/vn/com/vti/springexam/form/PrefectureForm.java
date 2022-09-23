@@ -14,10 +14,15 @@ public class PrefectureForm {
 	@NotNull
 	private Integer population;
 	private Integer section3Id;
+	private Integer section8Id;
 	private List<Integer> infrastructureIdList = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Integer getSection8Id() {
+		return section8Id;
 	}
 
 	public void setId(Integer id) {
@@ -54,5 +59,10 @@ public class PrefectureForm {
 
 	public void setInfrastructureIdList(List<Integer> infrastructureIdList) {
 		this.infrastructureIdList = infrastructureIdList;
+	}
+
+	public Integer setSection8Id(Integer section8Id) {
+		return this.section8Id = section8Id;
+		
 	}
 }

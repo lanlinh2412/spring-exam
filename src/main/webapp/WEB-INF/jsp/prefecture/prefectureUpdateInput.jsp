@@ -34,6 +34,11 @@
 						itemLabel="name" />
 				</form:select>
 			</dd>
+			<dt>８地方区分</dt>
+			<dd>
+				<form:radiobuttons items="${section8List}" itemValue="id"
+					itemLabel="name" path="section8List" />
+			</dd>
 			<dt>インフラ有無</dt>
 			<dd>
 				<form:checkboxes items="${infrastructureList}" itemValue="id"

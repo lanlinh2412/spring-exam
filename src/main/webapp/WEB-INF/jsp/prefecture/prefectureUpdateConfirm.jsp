@@ -26,6 +26,10 @@
 		<dd>
 			<c:out value="${section3.name}" />
 		</dd>
+		<dt>8地方区分</dt>
+		<dd>
+			<c:out value="${section8.name}" />
+		</dd>
 		<dt>インフラ有無</dt>
 		<dd>
 			<c:forEach items="${infrastructureList}" var="infrastructure">
@@ -38,6 +42,7 @@
 		<form:hidden path="name" />
 		<form:hidden path="population" />
 		<form:hidden path="section3Id" />
+		<form:hidden path="section8Id" />
 		<form:hidden path="infrastructureIdList" />
 		<input type="submit" value="OK" formaction="update">
 		<input type="submit" value="戻る" formaction="input">
