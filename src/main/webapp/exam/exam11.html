@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src=" checkLength.js"></script>
+<script type="text/javascript">
+	function checbmi() {
+		var errTag = document.getElementById("err");
+		var resultTag = document.getElementById("result");
+		//初期化
+		errTag.innerHTML = "";
+		resultTag.innerHTML = "";
+		document.fm.val1.style.backgroundColor = "white";
+		document.fm.val2.style.backgroundColor = "white";
+		//入力
+		var height = document.fm.val1.value;
+		var weight = document.fm.val2.value;
+		//入力チェック
+		var errorMessages = [];
+		if (height == "") {
+			errorMessages.push("身長を入力してください。");
+			document.fm.val1.style.backgroundColor = "red";
+		}
+		if (weight == "") {
+			errorMessages.push("体重を入力してください。");
+			document.fm.val2.style.backgroundColor = "red";
+		}
+		if (length(document.fm.val1.value)>3) {
+			errorMessages.push("身長には3桁以内の数値を入力してください。");
+			document.fm.val1.style.backgroundColor = "red";
+		}
+		if (length(document.fm.val2.value)>3) {
+			errorMessages.push("体重には3桁以内の数値を入力してください。");
+			document.fm.val1.style.backgroundColor = "red";
+		}
+		if (errorMessages.length > 0) {
+			var msg = errorMessages.join("<br>");
+			errTag.innerHTML = msg;
+			return;
+		}
+		//加工と出力
+	var heightMeter = parseInt(document.fm.val1.value)/100;
+	var bmi = parseInt(document.fm.val2.value)/heightMeter*heightMeter;
+	if(bmi<18.5){
+			resultTag.innerHTML = "低体重";
+		}else if (bmi>=18.5 && bmi <=25){
+			resultTag.innerHTML = "普通体重";
+		}else{
+			resultTag.innerHTML = "肥満";
+		}
+	}
+</script>
+</head>
+<body>
+	<span id="err" style="color: red"></span>
+	<form name="fm">
+		<dl>
+			<dt>身長</dt>
+			<dd>
+				<input name="val1" type="text" /> cm
+			</dd>
+			<dt>体重</dt>
+			<dd>
+				<input name="val1" type="text" /> kg
+			</dd>
+		</dl>
+		<input type="button" value="計算" onclick="checkbmi()" />
+	</form>
+	<div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>exam07</title>
+	</head>
+	<script type="text/javascript">
+		function checkNumber(){
+			var num = parseInt(document.fm.number.value);
+			if(num%2==0){
+				alert("偶数です。");
+			}
+			else{
+				alert("奇数です。");;
+			}
+			
+			if(num===-1){
+				alert("負の値です。");
+				document.fm.action="http://www.mof.go.jp/";
+				document.fm.submit();
+				return false;
+			}
+		}
+	
+	</script>
+<body>
+	<form name="fm">
+		<dl>
+			<dt>Number</dt>
+			<dd><input type="text" name="number"/></dd>
+		</dl>
+		<input type="button" onclick="return checkNumber()" value="proceed"/>
+	</form>
+</body>
+</html>
